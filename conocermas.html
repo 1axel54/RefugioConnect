@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conoce Nuestra Historia | Huellitas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --degradado: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: var(--degradado);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(rgba(255,255,255,0.1) 20%, transparent 20%);
+            background-size: 30px 30px;
+            animation: movimiento 20s linear infinite;
+        }
+
+        @keyframes movimiento {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-100px,100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        .historia-grid {
+            display: grid;
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .historia-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .historia-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .donar-seccion {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .donar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--degradado);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+
+        .donar-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .historia-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nuestra Historia</h1>
+            <p>Un camino de amor y compromiso con los animales</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="historia-grid">
+            <article class="historia-card">
+                <h2>Comienzos</h2>
+                <p>Todo empezó en 2015 con el rescate de un pequeño cachorro abandonado...</p>
+            </article>
+
+            <article class="historia-card">
+                <h2>Misión</h2>
+                <p>Crear un mundo donde cada animal tenga el amor que se merece...</p>
+            </article>
+
+            <article class="historia-card">
+                <h2>Logros</h2>
+                <p>Más de 1,000 animales rescatados y 500 adopciones exitosas...</p>
+            </article>
+        </div>
+
+        <section class="donar-seccion">
+            <h2>Apoya Nuestra Causa</h2>
+            <p>Tu contribución hace posible nuestro trabajo</p>
+            <div style="margin: 2rem 0">
+                <a href="donar.html" class="donar-btn">
+                    <i class="fas fa-heart"></i> Donar Ahora
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.historia-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Efecto hover para tarjetas
+        document.querySelectorAll('.historia-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

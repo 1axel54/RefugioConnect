@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopciones | Huellitas Refugio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --color-fondo: #f8f9fa;
+            --sombra: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--color-fondo);
+            margin: 0;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-primario);
+            margin: 2rem 0;
+        }
+
+        /* Grid de Animales */
+        .animales-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .animal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .animal-imagen {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .animal-info {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .animal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .animal-nombre {
+            color: var(--color-primario);
+            margin: 0;
+        }
+
+        .boton-mas-info {
+            background: var(--color-secundario);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .boton-mas-info:hover {
+            transform: rotate(180deg);
+        }
+
+        .detalles-adicionales {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .detalles-adicionales.abierto {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+
+        .caracteristicas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .caracteristica {
+            background: var(--color-fondo);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-adoptar {
+            display: block;
+            width: 100%;
+            background: var(--color-primario);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-adoptar:hover {
+            background: #ff5252;
+        }
+
+        @media (max-width: 768px) {
+            .animales-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* estilo botton */ 
+        .btn-volver {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: var(--color-primario);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: #ff5252;
+    transform: translateX(-5px);
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+    .btn-volver {
+        top: 10px;
+        left: 10px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+    </style>
+
+</head>
+<body>
+    
+    <a href="javascript:history.back()" class="btn-volver">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+    <div class="contenedor">
+        <h1>Animales en Adopción</h1>
+        
+        <div class="animales-grid">
+            <!-- Animal 1 -->
+            <div class="animal-card">
+                <img src="perro1.jpg" alt="Max" class="animal-imagen">
+                <div class="animal-info">
+                    <div class="animal-header">
+                        <h3 class="animal-nombre">Max</h3>
+                        <button class="boton-mas-info">+</button>
+                    </div>
+                    <div class="caracteristicas">
+                        <span class="caracteristica">🐶 Perro</span>
+                        <span class="caracteristica">2 años</span>
+                        <span class="caracteristica">Macho</span>
+                    </div>
+                    <div class="detalles-adicionales">
+                        <p><strong>Historia:</strong> Rescatado de la calle, muy juguetón y cariñoso.</p>
+                        <p><strong>Salud:</strong> Vacunado y esterilizado</p>
+                        <p><strong>Necesidades:</strong> Espacio para correr</p>
+                        <a href="#formulario-adopcion" class="btn-adoptar">Quiero adoptar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animal 2 -->
+            <div class="animal-card">
+                <img src="gato1.jpg" alt="Luna" class="animal-imagen">
+                <div class="animal-info">
+                    <div class="animal-header">
+                        <h3 class="animal-nombre">Luna</h3>
+                        <button class="boton-mas-info">+</button>
+                    </div>
+                    <div class="caracteristicas">
+                        <span class="caracteristica">🐱 Gata</span>
+                        <span class="caracteristica">1 año</span>
+                        <span class="caracteristica">Hembra</span>
+                    </div>
+                    <div class="detalles-adicionales">
+                        <p><strong>Historia:</strong> Encontrada abandonada en un parque.</p>
+                        <p><strong>Salud:</strong> Esterilizada y desparasitada</p>
+                        <p><strong>Personalidad:</strong> Tímida pero cariñosa</p>
+                        <a href="#formulario-adopcion" class="btn-adoptar">Quiero adoptar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animal 3 -->
+            <div class="animal-card">
+                <img src="perro2.jpg" alt="Rocky" class="animal-imagen">
+                <div class="animal-info">
+                    <div class="animal-header">
+                        <h3 class="animal-nombre">Rocky</h3>
+                        <button class="boton-mas-info">+</button>
+                    </div>
+                    <div class="caracteristicas">
+                        <span class="caracteristica">🐶 Perro</span>
+                        <span class="caracteristica">4 años</span>
+                        <span class="caracteristica">Macho</span>
+                    </div>
+                    <div class="detalles-adicionales">
+                        <p><strong>Historia:</strong> Dueño anterior no podía cuidarlo.</p>
+                        <p><strong>Salud:</strong> Con tratamiento dental</p>
+                        <p><strong>Advertencia:</strong> Necesita patio grande</p>
+                        <a href="#formulario-adopcion" class="btn-adoptar">Quiero adoptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.boton-mas-info').forEach(boton => {
+            boton.addEventListener('click', function() {
+                const card = this.closest('.animal-card');
+                const detalles = card.querySelector('.detalles-adicionales');
+                const estaAbierto = detalles.classList.contains('abierto');
+
+                // Cerrar todos los demás
+                document.querySelectorAll('.detalles-adicionales').forEach(d => {
+                    d.classList.remove('abierto');
+                    d.previousElementSibling.querySelector('button').textContent = '+';
+                });
+
+                // Abrir/cerrar el actual
+                if(!estaAbierto) {
+                    detalles.classList.add('aberto');
+                    this.textContent = '-';
+                    detalles.classList.add('abierto');
+                    
+                    // Scroll suave
+                    const cardTop = card.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: cardTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

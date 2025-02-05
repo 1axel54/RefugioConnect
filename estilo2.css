@@ -1,0 +1,80 @@
+:root {
+    --color-primario: #FF6B6B;
+    --color-fondo: #f8f9fa;
+    --sombra: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.donar-hero {
+    background: linear-gradient(135deg, var(--color-primario), #FF8E8E);
+    color: white;
+    text-align: center;
+    padding: 6rem 0 4rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: 2rem;
+}
+
+.seccion-donar {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.donacion-options {
+    display: grid;
+    gap: 2rem;
+}
+
+.paypal-option {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--sombra);
+    text-align: center;
+}
+
+.paypal-option h2 {
+    color: var(--color-primario);
+    margin-bottom: 1.5rem;
+}
+
+.info-donacion {
+    margin-top: 1.5rem;
+}
+
+.info-donacion input {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin: 0.5rem;
+    width: 120px;
+}
+
+.info-donacion button {
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-donacion button:hover {
+    opacity: 0.9;
+}
+
+.mensaje-exito {
+    /* Estilos similares al anterior */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .donar-hero {
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        padding: 4rem 0 3rem;
+    }
+    
+    .paypal-option {
+        padding: 1.5rem;
+    }
+}
